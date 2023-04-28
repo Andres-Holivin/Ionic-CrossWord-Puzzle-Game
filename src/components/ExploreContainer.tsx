@@ -14,18 +14,7 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
             <IonRow>
               {
                 [...Array(count)].map((v, i) =>
-                  <IonCol className='p-0 border-solid border-2 w-12 h-12' >
-                    <div className='w-full h-full'>
-                      <div style={{ "fontSize": "0.6em" }} className=' absolute z-10' >
-                        {i + (j * 10) + 1}
-                      </div>
-                      <div className='h-full'>
-                        <input maxLength={1}
-                        className='uppercase text-lg text-center bg-transparent
-                        outline-none w-full h-full'></input>
-                      </div>
-                    </div>
-                  </IonCol>
+                  <InputSqure position={parseInt((i+(j*count)+1).toString())} />
                 )
               }
             </IonRow>
@@ -36,5 +25,22 @@ const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
     </div>
   );
 };
+interface InputSqureInterface{
+  position:number
+}
+export const InputSqure: React.FC<InputSqureInterface> = ({position}) => {
+  return (<IonCol className='p-0 border-solid border-2 w-12 h-12' >
+    <div className='w-full h-full'>
+      <div style={{ "fontSize": "0.6em" }} className=' absolute z-10' >
+        {position}
+      </div>
+      <div className='h-full'>
+        <input maxLength={1}
+          className='uppercase text-lg text-center bg-transparent
+      outline-none w-full h-full'></input>
+      </div>
+    </div>
+  </IonCol>);
+}
 
 export default ExploreContainer;
